@@ -9,3 +9,4 @@ requests
 python-decouple
 psycopg[binary] #psycopg v3
 alembic
+psycopg2-binary
