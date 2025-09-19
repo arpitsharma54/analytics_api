@@ -7,6 +7,9 @@ if DATABASE_URL == "":
     raise NotImplementedError('DATABASE_URL needs to be set')
 
 print('DATABASE_URL', DATABASE_URL)
+# Fix SQLAlchemy dialect mismatch
+if DATABASE_URL and DATABASE_URL.startswith("postgres://"):
+    DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
 engine = timescaledb.create_engine(DATABASE_URL, timezone=DB_TIMEZONE)
 
 def init_db():
